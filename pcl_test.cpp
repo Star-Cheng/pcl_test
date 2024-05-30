@@ -30,7 +30,7 @@ int main()
 {
     // pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZRGBA>);
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-    pcl::io::loadPCDFile("bun4.pcd", *cloud);
+    pcl::io::loadPCDFile("../data/rabbit.pcd", *cloud);
 
     pcl::visualization::CloudViewer viewer("Cloud Viewer");
 

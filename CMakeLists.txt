@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.9)
 project(pcl_test)
 
 find_package(PCL 1.2 REQUIRED)
