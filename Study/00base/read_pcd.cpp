@@ -16,7 +16,7 @@ int main()
               << " data points from test_pcd.pcd with the following fields: "
               << std::endl;
     for (const auto &point : *cloud)
-        std::cout << "    " << point.x
+        std::cout << " " << point.x
                   << " " << point.y
                   << " " << point.z << std::endl;
 

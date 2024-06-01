@@ -10,7 +10,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": false,
+            "externalConsole": true, // 设置为fasle时，控制台输出会显示在vscode的输出面板中
             "MIMode": "gdb",
             "setupCommands": [
                 {
