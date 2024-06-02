@@ -119,3 +119,10 @@ pcl_v
 ```Cmake Cache
 CMAKE_BUILD_TYPE:STRING=Debug
 ```
+
+## Openni2
+
+```bash
+sudo apt-get update
+sudo apt-get install libpcl-dev libopenni-dev libopenni2-dev
+```
