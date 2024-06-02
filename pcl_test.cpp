@@ -2,6 +2,7 @@
 #include <pcl/point_types.h>
 #include <pcl/common/io.h> // for concatenateFields
 #include <pcl/io/pcd_io.h>
+#include <pcl/io/openni_grabber.h>
 int main(int argc, char **argv)
 {
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_a(new pcl::PointCloud<pcl::PointXYZ>);
@@ -39,7 +40,7 @@ int main(int argc, char **argv)
   cloud_c.height = 1;
   cloud_c.is_dense = false; // 设置为非稠密点云, 即点云数据中可能包含无效或缺失的点
   cloud_c.resize(cloud_c.width * cloud_c.height);
- // 合并点云
+  // 合并点云
   size_t i = 0;
   for (const auto &point : *cloud_a)
   {
@@ -52,6 +53,6 @@ int main(int argc, char **argv)
   pcl::io::savePCDFileASCII("data/concat_cloud.pcd", cloud_c); // 保存点云数据到文件
   std::cout << "Saved " << cloud_c.size() << " data points to data/concat_cloud.pcd." << std::endl;
   for (const auto &point : cloud_c)
-      std::cout << "    " << point.x << " " << point.y << " " << point.z << std::endl;
+    std::cout << "    " << point.x << " " << point.y << " " << point.z << std::endl;
   return (0);
 }

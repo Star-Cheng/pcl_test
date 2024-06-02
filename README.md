@@ -113,3 +113,9 @@ sudo make install
 
 pcl_v
 ```
+
+## Cmake Debug
+
+```Cmake Cache
+CMAKE_BUILD_TYPE:STRING=Debug
+```
