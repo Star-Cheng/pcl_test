@@ -1,58 +1,113 @@
-#include <iostream>
-#include <pcl/point_types.h>
-#include <pcl/common/io.h> // for concatenateFields
-#include <pcl/io/pcd_io.h>
-#include <pcl/io/openni_grabber.h>
-int main(int argc, char **argv)
-{
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_a(new pcl::PointCloud<pcl::PointXYZ>);
-  if (pcl::io::loadPCDFile<pcl::PointXYZ>("./data/rabbit.pcd", *cloud_a) == -1) //* load the file
-  {
-    PCL_ERROR("Couldn't read file test_pcd.pcd \n");
-    return (-1);
-  }
-  std::cout << "Loaded "
-            << cloud_a->width * cloud_a->height
-            << " data points from test_pcd.pcd with the following fields: "
-            << std::endl;
-  for (const auto &point : *cloud_a)
-    std::cout << " " << point.x
-              << " " << point.y
-              << " " << point.z << std::endl;
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_b(new pcl::PointCloud<pcl::PointXYZ>);
-  if (pcl::io::loadPCDFile<pcl::PointXYZ>("./data/airplane.pcd", *cloud_b) == -1) //* load the file
-  {
-    PCL_ERROR("Couldn't read file test_pcd.pcd \n");
-    return (-1);
-  }
-  std::cout << "Loaded "
-            << cloud_b->width * cloud_b->height
-            << " data points from test_pcd.pcd with the following fields: "
-            << std::endl;
-  for (const auto &point : *cloud_b)
-    std::cout << " " << point.x
-              << " " << point.y
-              << " " << point.z << std::endl;
+// https://pcl.readthedocs.io/projects/tutorials/en/master/octree.html#octree-search
+#include <pcl/point_cloud.h>
+#include <pcl/octree/octree_search.h>
 
-  pcl::PointCloud<pcl::PointXYZ> cloud_c;
-  // Fill in the cloud data
-  cloud_c.width = cloud_a->width + cloud_b->width;
-  cloud_c.height = 1;
-  cloud_c.is_dense = false; // 设置为非稠密点云, 即点云数据中可能包含无效或缺失的点
-  cloud_c.resize(cloud_c.width * cloud_c.height);
-  // 合并点云
-  size_t i = 0;
-  for (const auto &point : *cloud_a)
+#include <iostream>
+#include <vector>
+#include <ctime>
+
+int main()
+{
+  srand((unsigned int)time(NULL));
+
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+
+  // Generate pointcloud data
+  cloud->width = 1000;
+  cloud->height = 1;
+  cloud->points.resize(cloud->width * cloud->height);
+
+  for (std::size_t i = 0; i < cloud->size(); ++i)
   {
-    cloud_c.points[i++] = point;
+    (*cloud)[i].x = 1024.0f * rand() / (RAND_MAX + 1.0f);
+    (*cloud)[i].y = 1024.0f * rand() / (RAND_MAX + 1.0f);
+    (*cloud)[i].z = 1024.0f * rand() / (RAND_MAX + 1.0f);
   }
-  for (const auto &point : *cloud_b)
+  /***************************************************************************************
+  resolution表示八叉树的分辨率，即每个八叉树节点所覆盖的空间大小。在这里，分辨率为128.0f，表示八叉树将空间分割为大小为128x128x128的立方体节点。
+  更大的分辨率会导致八叉树节点更小，相应地会增加八叉树的深度和节点数量，而更小的分辨率会导致八叉树节点更大，减少深度和节点数量
+  ***************************************************************************************/
+  float resolution = 128.0f; // resolution表示八叉树的分辨率，即每个八叉树节点所覆盖的空间大小
+
+  pcl::octree::OctreePointCloudSearch<pcl::PointXYZ> octree(resolution);
+
+  octree.setInputCloud(cloud);
+  octree.addPointsFromInputCloud(); // 将点云中的点添加到八叉树数据结构中
+
+  pcl::PointXYZ searchPoint;
+
+  searchPoint.x = 1024.0f * rand() / (RAND_MAX + 1.0f);
+  searchPoint.y = 1024.0f * rand() / (RAND_MAX + 1.0f);
+  searchPoint.z = 1024.0f * rand() / (RAND_MAX + 1.0f);
+
+  // Neighbors within voxel search
+
+  std::vector<int> pointIdxVec;
+  /***************************************************************************************
+  voxelSearch(searchPoint, pointIdxVec)：该函数用于在八叉树中进行体素搜索。给定一个搜索点searchPoint，
+  函数会找到包含该搜索点的体素，并返回该体素中的所有点的索引，这些点保存在pointIdxVec中。
+  ***************************************************************************************/
+  if (octree.voxelSearch(searchPoint, pointIdxVec))
   {
-    cloud_c.points[i++] = point;
+    std::cout << "Neighbors within voxel search at ("
+              << searchPoint.x
+              << " " << searchPoint.y
+              << " " << searchPoint.z << ")"
+              << std::endl;
+
+    for (std::size_t i = 0; i < pointIdxVec.size(); ++i)
+      std::cout << "    " << (*cloud)[pointIdxVec[i]].x
+                << " " << (*cloud)[pointIdxVec[i]].y
+                << " " << (*cloud)[pointIdxVec[i]].z << std::endl;
   }
-  pcl::io::savePCDFileASCII("data/concat_cloud.pcd", cloud_c); // 保存点云数据到文件
-  std::cout << "Saved " << cloud_c.size() << " data points to data/concat_cloud.pcd." << std::endl;
-  for (const auto &point : cloud_c)
-    std::cout << "    " << point.x << " " << point.y << " " << point.z << std::endl;
-  return (0);
+
+  // K nearest neighbor search
+
+  int K = 10;
+
+  std::vector<int> pointIdxNKNSearch;
+  std::vector<float> pointNKNSquaredDistance;
+
+  std::cout << "K nearest neighbor search at (" << searchPoint.x
+            << " " << searchPoint.y
+            << " " << searchPoint.z
+            << ") with K=" << K << std::endl;
+  /***************************************************************************************
+  nearestKSearch(searchPoint, K, pointIdxNKNSearch, pointNKNSquaredDistance)：该函数用于在八叉树
+  中搜索K个最近邻的点。给定一个搜索点searchPoint和要搜索的最近邻点的数量K，函数会返回K个最近邻点的索引和对应
+  的距离，分别保存在pointIdxNKNSearch和pointNKNSquaredDistance中。
+  ***************************************************************************************/
+  if (octree.nearestKSearch(searchPoint, K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0)
+  {
+    for (std::size_t i = 0; i < pointIdxNKNSearch.size(); ++i)
+      std::cout << "    " << (*cloud)[pointIdxNKNSearch[i]].x
+                << " " << (*cloud)[pointIdxNKNSearch[i]].y
+                << " " << (*cloud)[pointIdxNKNSearch[i]].z
+                << " (squared distance: " << pointNKNSquaredDistance[i] << ")" << std::endl;
+  }
+
+  // Neighbors within radius search
+
+  std::vector<int> pointIdxRadiusSearch;
+  std::vector<float> pointRadiusSquaredDistance;
+
+  float radius = 256.0f * rand() / (RAND_MAX + 1.0f);
+
+  std::cout << "Neighbors within radius search at (" << searchPoint.x
+            << " " << searchPoint.y
+            << " " << searchPoint.z
+            << ") with radius=" << radius << std::endl;
+  /***************************************************************************************
+  radiusSearch(searchPoint, radius, pointIdxRadiusSearch, pointRadiusSquaredDistance)：该函数
+  用于在八叉树中搜索在给定半径范围内的点。给定一个搜索点searchPoint和搜索半径radius，函数会返回所有距离该搜索
+  点在给定半径范围内的点的索引和对应的距离，分别保存在pointIdxRadiusSearch和pointRadiusSquaredDistance中。
+  ***************************************************************************************/
+  if (octree.radiusSearch(searchPoint, radius, pointIdxRadiusSearch, pointRadiusSquaredDistance) > 0)
+  {
+    for (std::size_t i = 0; i < pointIdxRadiusSearch.size(); ++i)
+      std::cout << "    " << (*cloud)[pointIdxRadiusSearch[i]].x
+                << " " << (*cloud)[pointIdxRadiusSearch[i]].y
+                << " " << (*cloud)[pointIdxRadiusSearch[i]].z
+                << " (squared distance: " << pointRadiusSquaredDistance[i] << ")" << std::endl;
+  }
 }
