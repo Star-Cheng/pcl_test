@@ -103,4 +103,32 @@
     2. 体素化：将点云转换为体素来恢复三维模型
     3. 深度学习：通过深度学习来恢复三维模型
 
-## PCL头文件
+## 4. PCL头文件
+
+### 4.1 PCL头文件的作用
+
++ <pcl/io/pcd_io.h>: 用于点云的输入/输出操作，特别是PCD（点云数据）文件格式的读写。
++ <pcl/point_types.h>: 定义了PCL库中使用的各种点类型。
++ <liblas/liblas.hpp>: 与LAS文件格式相关的头文件，通常用于读写激光雷达数据。
++ <pcl/kdtree/kdtree_flann.h>: 提供基于FLANN的K-D树搜索结构，用于快速点云邻域搜索。
++ <pcl/octree/octree.h>: 提供八叉树结构，用于高效的点云搜索和管理。
++ <pcl/features/normal_3d.h>: 用于估计点云中点的表面法线。
++ <pcl/visualization/cloud_viewer.h>: 提供简单的点云可视化工具。
++ <pcl/keypoints/sift_keypoints.h>: 提供SIFT关键点检测功能。
++ <pcl/keypoints/harris_3D.h>: 提供3D Harris角点检测功能。
++ <pcl/keypoints/uniform_sampling.h>: 提供均匀采样关键点检测功能。
++ <pcl/filters/extract_indices.h>: 用于根据提供的索引提取点云中的点。
++ <pcl/registration/icp.h>: 提供迭代最近点（ICP）算法，用于点云之间的配准。
++ <pcl/registration/ndt.h>: 提供正态分布变换（NDT）算法，也用于点云配准。
++ <pcl/sample_consensus/ransac.h>: 提供随机抽样一致（RANSAC）算法，常用于模型拟合。
++ <pcl/sample_consensus/sac_model_plane.h>: 提供基于RANSAC的平面模型拟合。
++ <pcl/common/transforms.h>: 提供点云变换的功能，如旋转和平移。
++ <pcl/common/distances.h>: 提供计算点云中点之间距离的函数。
+
+### 4.2 PCL点云数据点类型
+
++ point_types.hpp中有完整点云类型定义。
++ PointXYZ：空间点坐标
++ PointXYZI：空间点坐标+强度
++ PointXYZRGB：空间点坐标+RGB颜色
++ PointXYZRGBA：空间点坐标+RGB颜色+透明度
