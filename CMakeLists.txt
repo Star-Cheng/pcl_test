@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.9)
 project(pcl_test)
-set(PCL_DIR "/usr/include/pcl-1.12",)
+# set(PCL_DIR "/usr/include/pcl-1.14",)
 find_package(PCL 1.2 REQUIRED)
 
 include_directories(${PCL_INCLUDE_DIRS})
