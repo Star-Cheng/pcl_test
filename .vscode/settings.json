@@ -74,6 +74,7 @@
         "core": "cpp",
         "*.txx": "cpp",
         "shared_mutex": "cpp",
-        "codecvt": "cpp"
+        "codecvt": "cpp",
+        "forward_list": "cpp"
     }
 }

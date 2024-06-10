@@ -6,8 +6,7 @@
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/visualization/cloud_viewer.h>
 #include <boost/thread/thread.hpp>
-#include "include/my_point_type.h"
-// typedef pcl::PointCloud<pcl::PointXYZRGBA> PointCloud;
+typedef pcl::PointCloud<pcl::PointXYZRGBA> PointCloud;
 
 // 点云可视化函数
 // 显示原始点云（model）和提取的关键点（scene_keypoints）
@@ -20,11 +19,11 @@ void visualize_pcd(PointCloud::Ptr model, pcl::PointCloud<pcl::PointXYZRGB>::Ptr
     viewer.addPointCloud(model, model_color, "model");
     viewer.addPointCloud(scene_keypoints, scene_keypoint_color, "scene_keypoints");
     viewer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 7, "scene_keypoints");
-
-    while (!viewer.wasStopped())
-    {
-        viewer.spinOnce();
-    }
+    viewer.spin();
+    // while (!viewer.wasStopped())
+    // {
+    //     viewer.spinOnce();
+    // }
 }
 
 // 你的文件地址
