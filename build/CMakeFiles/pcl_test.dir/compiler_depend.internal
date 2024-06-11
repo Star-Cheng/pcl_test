@@ -4,7 +4,19 @@
 CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /home/gym/Code/PCL/pcl_test/pcl_test.cpp
  /usr/include/stdc-predef.h
- /usr/include/c++/11/iostream
+ /usr/include/vtk-9.1/vtkAutoInit.h
+ /usr/include/vtk-9.1/vtkDebugLeaksManager.h
+ /usr/include/vtk-9.1/vtkCommonCoreModule.h
+ /usr/include/vtk-9.1/vtkSystemIncludes.h
+ /usr/include/vtk-9.1/vtkWin32Header.h
+ /usr/include/vtk-9.1/vtkABI.h
+ /usr/include/vtk-9.1/vtkBuild.h
+ /usr/include/vtk-9.1/vtkPlatform.h
+ /usr/include/vtk-9.1/vtkIOStream.h
+ /usr/include/c++/11/fstream
+ /usr/include/c++/11/istream
+ /usr/include/c++/11/ios
+ /usr/include/c++/11/iosfwd
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h
  /usr/include/features.h
@@ -17,9 +29,6 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h
  /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h
  /usr/include/c++/11/pstl/pstl_config.h
- /usr/include/c++/11/ostream
- /usr/include/c++/11/ios
- /usr/include/c++/11/iosfwd
  /usr/include/c++/11/bits/stringfwd.h
  /usr/include/c++/11/bits/memoryfwd.h
  /usr/include/c++/11/bits/postypes.h
@@ -179,12 +188,50 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h
  /usr/include/c++/11/bits/locale_facets.tcc
  /usr/include/c++/11/bits/basic_ios.tcc
+ /usr/include/c++/11/ostream
  /usr/include/c++/11/bits/ostream.tcc
- /usr/include/c++/11/istream
  /usr/include/c++/11/bits/istream.tcc
- /usr/include/pcl-1.12/pcl/point_types.h
- /usr/include/c++/11/bitset
- /usr/include/pcl-1.12/pcl/impl/point_types.hpp
+ /usr/include/c++/11/bits/codecvt.h
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h
+ /usr/include/c++/11/bits/fstream.tcc
+ /usr/include/c++/11/iomanip
+ /usr/include/c++/11/locale
+ /usr/include/c++/11/bits/locale_facets_nonio.h
+ /usr/include/c++/11/ctime
+ /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h
+ /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h
+ /usr/include/libintl.h
+ /usr/include/c++/11/bits/locale_facets_nonio.tcc
+ /usr/include/c++/11/bits/locale_conv.h
+ /usr/include/c++/11/bits/unique_ptr.h
+ /usr/include/c++/11/utility
+ /usr/include/c++/11/bits/stl_relops.h
+ /usr/include/c++/11/tuple
+ /usr/include/c++/11/array
+ /usr/include/c++/11/bits/uses_allocator.h
+ /usr/include/c++/11/bits/invoke.h
+ /usr/include/c++/11/bits/quoted_string.h
+ /usr/include/c++/11/sstream
+ /usr/include/c++/11/bits/sstream.tcc
+ /usr/include/c++/11/iostream
+ /usr/include/vtk-9.1/vtkType.h
+ /usr/include/vtk-9.1/vtkCompiler.h
+ /usr/include/vtk-9.1/vtkLegacy.h
+ /usr/include/vtk-9.1/vtkOptions.h
+ /usr/include/vtk-9.1/vtk_kwiml.h
+ /usr/include/vtk-9.1/vtkkwiml/abi.h
+ /usr/include/vtk-9.1/vtkkwiml/int.h
+ /usr/include/vtk-9.1/vtkkwiml/abi.h
+ /usr/include/inttypes.h
+ /usr/include/vtk-9.1/vtkWrappingHints.h
+ /usr/include/vtk-9.1/vtkOStreamWrapper.h
+ /usr/include/vtk-9.1/vtkOStrStreamWrapper.h
+ /usr/include/c++/11/stdlib.h
+ /usr/include/string.h
+ /usr/include/strings.h
+ /usr/include/vtk-9.1/vtkTimeStamp.h
+ /usr/include/pcl-1.12/pcl/io/pcd_io.h
  /usr/include/pcl-1.12/pcl/memory.h
  /usr/include/pcl-1.12/pcl/type_traits.h
  /usr/include/pcl-1.12/pcl/point_struct_traits.h
@@ -389,12 +436,6 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/boost/preprocessor/seq/enum.hpp
  /usr/include/boost/preprocessor/seq/size.hpp
  /usr/include/c++/11/functional
- /usr/include/c++/11/tuple
- /usr/include/c++/11/utility
- /usr/include/c++/11/bits/stl_relops.h
- /usr/include/c++/11/array
- /usr/include/c++/11/bits/uses_allocator.h
- /usr/include/c++/11/bits/invoke.h
  /usr/include/c++/11/bits/refwrap.h
  /usr/include/c++/11/bits/std_function.h
  /usr/include/c++/11/unordered_map
@@ -448,16 +489,11 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h
  /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h
  /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h
- /usr/include/c++/11/stdlib.h
  /usr/include/c++/11/complex
- /usr/include/c++/11/sstream
- /usr/include/c++/11/bits/sstream.tcc
  /usr/include/eigen3/Eigen/src/Core/util/MKL_support.h
  /usr/include/c++/11/cassert
  /usr/include/assert.h
  /usr/include/c++/11/cstring
- /usr/include/string.h
- /usr/include/strings.h
  /usr/include/c++/11/climits
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h
  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h
@@ -601,7 +637,6 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/c++/11/bits/stl_raw_storage_iter.h
  /usr/include/c++/11/bits/align.h
  /usr/include/c++/11/bit
- /usr/include/c++/11/bits/unique_ptr.h
  /usr/include/c++/11/bits/shared_ptr.h
  /usr/include/c++/11/bits/shared_ptr_base.h
  /usr/include/c++/11/bits/allocated_ptr.h
@@ -616,78 +651,6 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/boost/preprocessor/comparison/less.hpp
  /usr/include/boost/preprocessor/comparison/less_equal.hpp
  /usr/include/boost/preprocessor/logical/not.hpp
- /usr/include/pcl-1.12/pcl/PCLPointField.h
- /usr/include/pcl-1.12/pcl/types.h
- /usr/include/pcl-1.12/pcl/register_point_struct.h
- /usr/include/boost/preprocessor/seq/for_each.hpp
- /usr/include/boost/preprocessor/repetition/for.hpp
- /usr/include/boost/preprocessor/repetition/detail/for.hpp
- /usr/include/boost/preprocessor/seq/seq.hpp
- /usr/include/boost/preprocessor/seq/elem.hpp
- /usr/include/boost/preprocessor/seq/detail/is_empty.hpp
- /usr/include/boost/preprocessor/seq/transform.hpp
- /usr/include/boost/preprocessor/seq/fold_left.hpp
- /usr/include/boost/mpl/and.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/and.hpp
- /usr/include/boost/mpl/contains.hpp
- /usr/include/boost/mpl/contains_fwd.hpp
- /usr/include/boost/mpl/sequence_tag.hpp
- /usr/include/boost/mpl/sequence_tag_fwd.hpp
- /usr/include/boost/mpl/aux_/has_begin.hpp
- /usr/include/boost/mpl/aux_/contains_impl.hpp
- /usr/include/boost/mpl/begin_end.hpp
- /usr/include/boost/mpl/aux_/begin_end_impl.hpp
- /usr/include/boost/mpl/aux_/traits_lambda_spec.hpp
- /usr/include/boost/mpl/find.hpp
- /usr/include/boost/mpl/find_if.hpp
- /usr/include/boost/mpl/aux_/find_if_pred.hpp
- /usr/include/boost/mpl/aux_/iter_apply.hpp
- /usr/include/boost/mpl/apply.hpp
- /usr/include/boost/mpl/apply_fwd.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/apply_fwd.hpp
- /usr/include/boost/mpl/placeholders.hpp
- /usr/include/boost/mpl/arg.hpp
- /usr/include/boost/mpl/arg_fwd.hpp
- /usr/include/boost/mpl/aux_/na_assert.hpp
- /usr/include/boost/mpl/aux_/arity_spec.hpp
- /usr/include/boost/mpl/aux_/arg_typedef.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/arg.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/placeholders.hpp
- /usr/include/boost/mpl/lambda.hpp
- /usr/include/boost/mpl/bind.hpp
- /usr/include/boost/mpl/bind_fwd.hpp
- /usr/include/boost/mpl/aux_/config/bind.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/bind_fwd.hpp
- /usr/include/boost/mpl/protect.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/bind.hpp
- /usr/include/boost/mpl/aux_/full_lambda.hpp
- /usr/include/boost/mpl/quote.hpp
- /usr/include/boost/mpl/aux_/has_type.hpp
- /usr/include/boost/mpl/aux_/config/bcc.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/quote.hpp
- /usr/include/boost/mpl/aux_/template_arity.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/template_arity.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/full_lambda.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/apply.hpp
- /usr/include/boost/mpl/deref.hpp
- /usr/include/boost/mpl/aux_/msvc_type.hpp
- /usr/include/boost/mpl/iter_fold_if.hpp
- /usr/include/boost/mpl/logical.hpp
- /usr/include/boost/mpl/or.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/or.hpp
- /usr/include/boost/mpl/always.hpp
- /usr/include/boost/mpl/aux_/preprocessor/default_params.hpp
- /usr/include/boost/mpl/pair.hpp
- /usr/include/boost/mpl/aux_/iter_fold_if_impl.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/iter_fold_if_impl.hpp
- /usr/include/boost/mpl/same_as.hpp
- /usr/include/boost/mpl/aux_/lambda_spec.hpp
- /usr/include/boost/mpl/fold.hpp
- /usr/include/boost/mpl/O1_size.hpp
- /usr/include/boost/mpl/aux_/O1_size_impl.hpp
- /usr/include/boost/mpl/aux_/has_size.hpp
- /usr/include/boost/mpl/aux_/fold_impl.hpp
- /usr/include/boost/mpl/aux_/preprocessed/gcc/fold_impl.hpp
  /usr/include/pcl-1.12/pcl/point_cloud.h
  /usr/include/eigen3/Eigen/StdVector
  /usr/include/eigen3/Eigen/Core
@@ -740,11 +703,12 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/pcl-1.12/pcl/PCLHeader.h
  /usr/include/pcl-1.12/pcl/exceptions.h
  /usr/include/boost/current_function.hpp
+ /usr/include/pcl-1.12/pcl/types.h
  /usr/include/pcl-1.12/pcl/console/print.h
  /usr/include/pcl-1.12/pcl/pcl_exports.h
- /usr/include/pcl-1.12/pcl/io/pcd_io.h
  /usr/include/pcl-1.12/pcl/io/file_io.h
  /usr/include/pcl-1.12/pcl/conversions.h
+ /usr/include/pcl-1.12/pcl/PCLPointField.h
  /usr/include/pcl-1.12/pcl/PCLPointCloud2.h
  /usr/include/boost/predef/other/endian.h
  /usr/include/boost/predef/version_number.h
@@ -765,7 +729,50 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/pcl-1.12/pcl/PCLImage.h
  /usr/include/pcl-1.12/pcl/for_each_type.h
  /usr/include/boost/mpl/is_sequence.hpp
+ /usr/include/boost/mpl/and.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/and.hpp
+ /usr/include/boost/mpl/begin_end.hpp
+ /usr/include/boost/mpl/aux_/begin_end_impl.hpp
+ /usr/include/boost/mpl/sequence_tag_fwd.hpp
+ /usr/include/boost/mpl/aux_/has_begin.hpp
+ /usr/include/boost/mpl/aux_/traits_lambda_spec.hpp
+ /usr/include/boost/mpl/sequence_tag.hpp
+ /usr/include/boost/mpl/deref.hpp
+ /usr/include/boost/mpl/aux_/msvc_type.hpp
  /usr/include/boost/mpl/remove_if.hpp
+ /usr/include/boost/mpl/fold.hpp
+ /usr/include/boost/mpl/O1_size.hpp
+ /usr/include/boost/mpl/aux_/O1_size_impl.hpp
+ /usr/include/boost/mpl/aux_/has_size.hpp
+ /usr/include/boost/mpl/aux_/fold_impl.hpp
+ /usr/include/boost/mpl/apply.hpp
+ /usr/include/boost/mpl/apply_fwd.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/apply_fwd.hpp
+ /usr/include/boost/mpl/placeholders.hpp
+ /usr/include/boost/mpl/arg.hpp
+ /usr/include/boost/mpl/arg_fwd.hpp
+ /usr/include/boost/mpl/aux_/na_assert.hpp
+ /usr/include/boost/mpl/aux_/arity_spec.hpp
+ /usr/include/boost/mpl/aux_/arg_typedef.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/arg.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/placeholders.hpp
+ /usr/include/boost/mpl/lambda.hpp
+ /usr/include/boost/mpl/bind.hpp
+ /usr/include/boost/mpl/bind_fwd.hpp
+ /usr/include/boost/mpl/aux_/config/bind.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/bind_fwd.hpp
+ /usr/include/boost/mpl/protect.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/bind.hpp
+ /usr/include/boost/mpl/aux_/full_lambda.hpp
+ /usr/include/boost/mpl/quote.hpp
+ /usr/include/boost/mpl/aux_/has_type.hpp
+ /usr/include/boost/mpl/aux_/config/bcc.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/quote.hpp
+ /usr/include/boost/mpl/aux_/template_arity.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/template_arity.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/full_lambda.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/apply.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/fold_impl.hpp
  /usr/include/boost/mpl/reverse_fold.hpp
  /usr/include/boost/mpl/aux_/reverse_fold_impl.hpp
  /usr/include/boost/mpl/aux_/preprocessed/gcc/reverse_fold_impl.hpp
@@ -779,6 +786,24 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/boost/mpl/aux_/push_front_impl.hpp
  /usr/include/boost/mpl/clear.hpp
  /usr/include/boost/mpl/aux_/clear_impl.hpp
+ /usr/include/boost/mpl/aux_/preprocessor/default_params.hpp
+ /usr/include/boost/mpl/contains.hpp
+ /usr/include/boost/mpl/contains_fwd.hpp
+ /usr/include/boost/mpl/aux_/contains_impl.hpp
+ /usr/include/boost/mpl/find.hpp
+ /usr/include/boost/mpl/find_if.hpp
+ /usr/include/boost/mpl/aux_/find_if_pred.hpp
+ /usr/include/boost/mpl/aux_/iter_apply.hpp
+ /usr/include/boost/mpl/iter_fold_if.hpp
+ /usr/include/boost/mpl/logical.hpp
+ /usr/include/boost/mpl/or.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/or.hpp
+ /usr/include/boost/mpl/always.hpp
+ /usr/include/boost/mpl/pair.hpp
+ /usr/include/boost/mpl/aux_/iter_fold_if_impl.hpp
+ /usr/include/boost/mpl/aux_/preprocessed/gcc/iter_fold_if_impl.hpp
+ /usr/include/boost/mpl/same_as.hpp
+ /usr/include/boost/mpl/aux_/lambda_spec.hpp
  /usr/include/boost/mpl/aux_/unwrap.hpp
  /usr/include/boost/ref.hpp
  /usr/include/boost/core/ref.hpp
@@ -916,6 +941,11 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/boost/concept/usage.hpp
  /usr/include/boost/concept/detail/concept_def.hpp
  /usr/include/boost/preprocessor/seq/for_each_i.hpp
+ /usr/include/boost/preprocessor/repetition/for.hpp
+ /usr/include/boost/preprocessor/repetition/detail/for.hpp
+ /usr/include/boost/preprocessor/seq/seq.hpp
+ /usr/include/boost/preprocessor/seq/elem.hpp
+ /usr/include/boost/preprocessor/seq/detail/is_empty.hpp
  /usr/include/boost/concept/detail/concept_undef.hpp
  /usr/include/boost/iterator/iterator_concepts.hpp
  /usr/include/boost/range/value_type.hpp
@@ -932,6 +962,8 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/boost/utility/binary.hpp
  /usr/include/boost/preprocessor/control/deduce_d.hpp
  /usr/include/boost/preprocessor/seq/cat.hpp
+ /usr/include/boost/preprocessor/seq/fold_left.hpp
+ /usr/include/boost/preprocessor/seq/transform.hpp
  /usr/include/boost/preprocessor/arithmetic/mod.hpp
  /usr/include/boost/preprocessor/arithmetic/detail/div_base.hpp
  /usr/include/boost/utility/identity_type.hpp
@@ -953,15 +985,6 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/boost/range/iterator_range_io.hpp
  /usr/include/boost/range/detail/str_types.hpp
  /usr/include/boost/algorithm/string/compare.hpp
- /usr/include/c++/11/locale
- /usr/include/c++/11/bits/locale_facets_nonio.h
- /usr/include/c++/11/ctime
- /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h
- /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h
- /usr/include/libintl.h
- /usr/include/c++/11/bits/codecvt.h
- /usr/include/c++/11/bits/locale_facets_nonio.tcc
- /usr/include/c++/11/bits/locale_conv.h
  /usr/include/boost/algorithm/string/find.hpp
  /usr/include/boost/algorithm/string/finder.hpp
  /usr/include/boost/algorithm/string/constants.hpp
@@ -1096,10 +1119,6 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/boost/algorithm/string/classification.hpp
  /usr/include/boost/algorithm/string/detail/classification.hpp
  /usr/include/boost/algorithm/string/predicate_facade.hpp
- /usr/include/c++/11/fstream
- /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h
- /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h
- /usr/include/c++/11/bits/fstream.tcc
  /usr/include/pcl-1.12/pcl/common/io.h
  /usr/include/c++/11/numeric
  /usr/include/c++/11/bits/stl_numeric.h
@@ -1111,6 +1130,11 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/pcl-1.12/pcl/common/concatenate.h
  /usr/include/pcl-1.12/pcl/common/copy_point.h
  /usr/include/pcl-1.12/pcl/common/impl/copy_point.hpp
+ /usr/include/pcl-1.12/pcl/point_types.h
+ /usr/include/c++/11/bitset
+ /usr/include/pcl-1.12/pcl/impl/point_types.hpp
+ /usr/include/pcl-1.12/pcl/register_point_struct.h
+ /usr/include/boost/preprocessor/seq/for_each.hpp
  /usr/include/pcl-1.12/pcl/io/low_level_io.h
  /usr/include/x86_64-linux-gnu/sys/mman.h
  /usr/include/x86_64-linux-gnu/bits/mman.h
@@ -1417,36 +1441,14 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/pcl-1.12/pcl/visualization/point_cloud_geometry_handlers.h
  /usr/include/vtk-9.1/vtkSmartPointer.h
  /usr/include/vtk-9.1/vtkSmartPointerBase.h
- /usr/include/vtk-9.1/vtkCommonCoreModule.h
  /usr/include/vtk-9.1/vtkObjectBase.h
  /usr/include/vtk-9.1/vtkFeatures.h
  /usr/include/vtk-9.1/vtkIndent.h
- /usr/include/vtk-9.1/vtkSystemIncludes.h
- /usr/include/vtk-9.1/vtkWin32Header.h
- /usr/include/vtk-9.1/vtkABI.h
- /usr/include/vtk-9.1/vtkBuild.h
- /usr/include/vtk-9.1/vtkPlatform.h
- /usr/include/vtk-9.1/vtkIOStream.h
- /usr/include/c++/11/iomanip
- /usr/include/c++/11/bits/quoted_string.h
- /usr/include/vtk-9.1/vtkType.h
- /usr/include/vtk-9.1/vtkCompiler.h
- /usr/include/vtk-9.1/vtkLegacy.h
- /usr/include/vtk-9.1/vtkOptions.h
- /usr/include/vtk-9.1/vtk_kwiml.h
- /usr/include/vtk-9.1/vtkkwiml/abi.h
- /usr/include/vtk-9.1/vtkkwiml/int.h
- /usr/include/vtk-9.1/vtkkwiml/abi.h
- /usr/include/inttypes.h
- /usr/include/vtk-9.1/vtkWrappingHints.h
- /usr/include/vtk-9.1/vtkOStreamWrapper.h
- /usr/include/vtk-9.1/vtkOStrStreamWrapper.h
  /usr/include/vtk-9.1/vtkMeta.h
  /usr/include/vtk-9.1/vtkNew.h
  /usr/include/vtk-9.1/vtkPoints.h
  /usr/include/vtk-9.1/vtkObject.h
  /usr/include/vtk-9.1/vtkSetGet.h
- /usr/include/vtk-9.1/vtkTimeStamp.h
  /usr/include/vtk-9.1/vtkWeakPointerBase.h
  /usr/include/vtk-9.1/vtkDataArray.h
  /usr/include/vtk-9.1/vtkAbstractArray.h
@@ -1461,7 +1463,6 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/vtk-9.1/vtkAOSDataArrayTemplate.h
  /usr/include/vtk-9.1/vtkBuffer.h
  /usr/include/vtk-9.1/vtkObjectFactory.h
- /usr/include/vtk-9.1/vtkDebugLeaksManager.h
  /usr/include/vtk-9.1/vtkGenericDataArray.h
  /usr/include/vtk-9.1/vtkGenericDataArrayLookupHelper.h
  /usr/include/vtk-9.1/vtkIdList.h
@@ -1787,4 +1788,31 @@ CMakeFiles/pcl_test.dir/pcl_test.cpp.o
  /usr/include/vtk-9.1/vtkPolygon.h
  /usr/include/vtk-9.1/vtkUnstructuredGrid.h
  /usr/include/vtk-9.1/vtkUnstructuredGridBase.h
+ /usr/include/pcl-1.12/pcl/console/time.h
+ /usr/include/c++/11/chrono
+ /usr/include/c++/11/ratio
+ /usr/include/c++/11/bits/parse_numbers.h
+ /usr/include/pcl-1.12/pcl/features/normal_3d_omp.h
+ /usr/include/pcl-1.12/pcl/features/fpfh.h
+ /usr/include/pcl-1.12/pcl/visualization/pcl_plotter.h
+ /usr/include/vtk-9.1/vtkContextView.h
+ /usr/include/vtk-9.1/vtkRenderViewBase.h
+ /usr/include/vtk-9.1/vtkView.h
+ /usr/include/vtk-9.1/vtkViewsCoreModule.h
+ /usr/include/vtk-9.1/vtkViewsContext2DModule.h
+ /usr/include/vtk-9.1/vtkChartXY.h
+ /usr/include/vtk-9.1/vtkChart.h
+ /usr/include/vtk-9.1/vtkChartsCoreModule.h
+ /usr/include/vtk-9.1/vtkRenderingContext2DModule.h
+ /usr/include/vtk-9.1/vtkContextItem.h
+ /usr/include/vtk-9.1/vtkAbstractContextItem.h
+ /usr/include/vtk-9.1/vtkRect.h
+ /usr/include/vtk-9.1/vtkVector.h
+ /usr/include/vtk-9.1/vtkTuple.h
+ /usr/include/vtk-9.1/vtkContextPolygon.h
+ /usr/include/vtk-9.1/vtkColorSeries.h
+ /usr/include/vtk-9.1/vtkColor.h
+ /usr/include/vtk-9.1/vtkCommonColorModule.h
+ /usr/include/vtk-9.1/vtkChart.h
+ /usr/include/pcl-1.12/pcl/visualization/impl/pcl_plotter.hpp
 
