@@ -1,70 +1,55 @@
-#include <iostream>
 #include <pcl/io/pcd_io.h>
-#include <pcl/point_types.h>
-#include <pcl/common/io.h>
-#include <pcl/features/normal_3d.h>
-#include <pcl/visualization/pcl_visualizer.h>
-#include <pcl/console/time.h>
 #include <pcl/features/normal_3d_omp.h>
-#include <pcl/features/fpfh.h>
-#include <pcl/visualization/pcl_plotter.h>
-using namespace pcl;
+#include <omp.h>
+#include <pcl/visualization/cloud_viewer.h>
+#include <string>
+#include <boost/thread/thread.hpp>
 
-int main(int argc, char **argv)
+using namespace std;
+
+int main()
 {
-    std::cout << "Starting program...\n";
-    std::cout << "PCL version: " << PCL_VERSION << std::endl;
-    // 读取点云
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-    if (pcl::io::loadPCDFile<pcl::PointXYZ>("./data/rabbit.pcd", *cloud) == -1)
-    {
-        PCL_ERROR("Couldn't read file rabbit.pcd\n");
-        system("pause");
-        return -1;
-    }
-    std::cout << "Loaded point cloud with " << cloud->size() << " points.\n";
-
-    // 估计法线
-    // pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
-    pcl::NormalEstimationOMP<pcl::PointXYZ, pcl::Normal> ne;
+    pcl::io::loadPCDFile("./data/airplane.pcd", *cloud);
+    std::cout << "PCL version: " << PCL_VERSION << std::endl;
+    pcl::NormalEstimationOMP<pcl::PointXYZ, pcl::Normal> ne;//创建法线估计向量
+    ne.setNumberOfThreads(omp_get_max_threads());
     ne.setInputCloud(cloud);
-    pcl::search::KdTree<pcl::PointXYZ>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZ>());
+    pcl::search::KdTree<pcl::PointXYZ>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZ>());//创建一个空的KdTree对象，并把它传递给法线估计向量，基于给出的输入数据集，KdTree将被建立
     ne.setSearchMethod(tree);
-    pcl::PointCloud<pcl::Normal>::Ptr cloud_normals(new pcl::PointCloud<pcl::Normal>);
-    ne.setRadiusSearch(0.2);    // 使用半径在查询点周围0.2范围内的所有邻元素
-    ne.compute(*cloud_normals); // 计算法线
-    std::cout << "Normals estimated.\n";
+    ne.setViewPoint(10, 10, 10);//设置视点，官网上的pcl::flipNormalTowardsViewpoint (const PointT &point, float vp_x, float vp_y, float vp_z, Eigen::Vector4f &normal)是对“一个已知点”的法线进行手动定向
+    //ne.setViewPoint(-10, -10, -10);
+    pcl::PointCloud<pcl::Normal>::Ptr cloud_normals(new pcl::PointCloud<pcl::Normal>);//存储输出数据
+    ne.setRadiusSearch(0.05);        //半径单位为毫米
+    // ne.setKSearch(5);
+    ne.compute(*cloud_normals);
 
-    // FPFH
-    pcl::FPFHEstimation<pcl::PointXYZ, pcl::Normal, pcl::FPFHSignature33> fpfh;
-    fpfh.setInputCloud(cloud);
-    fpfh.setInputNormals(cloud_normals);
-    pcl::search::KdTree<PointXYZ>::Ptr tree1(new pcl::search::KdTree<pcl::PointXYZ>());
-    fpfh.setSearchMethod(tree1);
-    pcl::PointCloud<pcl::FPFHSignature33>::Ptr fpfhs(new pcl::PointCloud<pcl::FPFHSignature33>());
-    fpfh.setRadiusSearch(0.05); // 半径必须大于估计法线时使用的半径
-    fpfh.compute(*fpfhs);
-    std::cout << "FPFH features computed.\n";
+    //保存具有法线信息的点云文件
+    // pcl::PCDWriter savePCDFile;
+    // savePCDFile.write("./data/rabbit.pcd", *cloud_normals);
 
-    // 显示某点的fhfh特征
-    pcl::visualization::PCLPlotter plotter;
-    plotter.addFeatureHistogram<pcl::FPFHSignature33>(*fpfhs, "fpfh", 60);
-    std::cout << "FPFH histogram prepared.\n";
+    //可视化
+    boost::shared_ptr<pcl::visualization::PCLVisualizer> m_viewer(new pcl::visualization::PCLVisualizer());
 
-    // 可视化
-    pcl::visualization::PCLVisualizer viewer("PCL Viewer");
-    viewer.setBackgroundColor(0.0, 0.0, 0.0);
-    viewer.addPointCloudNormals<pcl::PointXYZ, pcl::Normal>(cloud, cloud_normals, 1, 0.4, "normals");
-    viewer.addPointCloud(cloud, "cloud1");
-    viewer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, "cloud1");
-    std::cout << "Visualization prepared. Starting visualization loop...\n";
+    int v1(0);
+    m_viewer->createViewPort(0.0, 0.0, 0.5, 1.0, v1);
+    m_viewer->addCoordinateSystem(v1);
+    m_viewer->setBackgroundColor(128.0 / 255.0, 138.0 / 255.0, 135.0 / 255.0, v1);
+    pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> color(cloud, 0, 255, 0);
+    m_viewer->addPointCloud(cloud, color, "cloud1", v1);
 
-    while (!viewer.wasStopped())
+    int v2(0);
+    m_viewer->createViewPort(0.5, 0.0, 1.0, 1.0, v2);
+    m_viewer->addCoordinateSystem(v2);
+    m_viewer->setBackgroundColor(128.0 / 255.0, 138.0 / 255.0, 135.0 / 255.0, v2);
+    //显示点云及其法线
+    pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> Cap_Cloud_Point(cloud, 255, 0, 0);
+    m_viewer->addPointCloud(cloud, Cap_Cloud_Point, "cloud2", v2);
+    //显示点云法线，第三个参数是法线显示的个数(每2个点显示1个)，第四个参数是法线的长度(此处为0.5)
+    m_viewer->addPointCloudNormals<pcl::PointXYZ, pcl::Normal>(cloud, cloud_normals, 5, 0.1, "normals", v2); 
+    while (!m_viewer->wasStopped())
     {
-        plotter.plot();
-        viewer.spin();
+        m_viewer->spin();
     }
-
-    std::cout << "Program finished.\n";
     return 0;
 }
