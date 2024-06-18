@@ -1,5 +1,11 @@
 # pcl_test
 
+## setup
+
+```bash
+bash setup.sh
+```
+
 ## pcl_test.cpp
 
 ```C++
