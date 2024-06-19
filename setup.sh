@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 cp -r data/ ..
 cd ..
-mkdir build
+if [ ! -d "build" ]; then
+    mkdir build
+else
+    echo "build directory already exists, skipping mkdir"
+fi
+mv data build/

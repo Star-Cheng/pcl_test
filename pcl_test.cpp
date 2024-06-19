@@ -16,7 +16,7 @@
 #include <pcl/filters/bilateral.h>                   // Bilateral双边滤波器
 #include <pcl/kdtree/kdtree.h>
 #include <pcl/kdtree/kdtree_flann.h>
-
+#include <filesystem> // or <boost/filesystem.hpp> for Boost.Filesystem
 int main()
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
@@ -30,9 +30,10 @@ int main()
     pcl::PointCloud<pcl::PointXYZ>::Ptr projection_filtered(new pcl::PointCloud<pcl::PointXYZ>);
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_sphere_filtered(new pcl::PointCloud<pcl::PointXYZ>);
 
-    pcl::io::loadPCDFile("../data/airplane.pcd", *cloud);
+    pcl::io::loadPCDFile("./data/airplane.pcd", *cloud);
     std::cout << "cloud points: " << cloud->width * cloud->height << std::endl;
-
+    std::filesystem::path currentPath = std::filesystem::current_path();
+    std::cout << "Current directory: " << currentPath << std::endl;
     // 1. 直通滤波
     /*直通滤波器的工作原理类似于一个空间的“切片”操作。你可以指定一个轴（例如X轴、Y轴或Z轴）和该轴上的
     一个最小值与最大值，滤波器将仅保留位于这个范围内的点，而移除所有其他的点。例如，如果你在Z轴上应用直

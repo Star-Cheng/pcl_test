@@ -72,14 +72,14 @@ int main()
 ```bash
 cmake_minimum_required(VERSION 2.6)
 project(pcl_test)
-
+set(CMAKE_BUILD_TYPE Debug)  # 设置编译类型为Debug
 find_package(PCL 1.2 REQUIRED)
 
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-add_executable(pcl_test pcl_test.cpp)
+add_executable(pcl_test src/pcl_test.cpp)
 
 target_link_libraries (pcl_test ${PCL_LIBRARIES})
 
@@ -107,6 +107,8 @@ sudo apt-get install freeglut3-dev pkg-config
 sudo apt-get install libxmu-dev libxi-dev
 sudo apt-get install mono-complete
 sudo apt-get install openjdk-8-jdk openjdk-8-jre
+sudo apt-get update
+sudo apt-get install libopenni-dev libopenni2-dev
 
 git clone https://github.com/PointCloudLibrary/pcl.git 
 
@@ -122,7 +124,7 @@ pcl_v
 
 ## Cmake Debug
 
-```Cmake Cache
+```Makefile
 CMAKE_BUILD_TYPE:STRING=Debug
 ```
 
@@ -130,5 +132,5 @@ CMAKE_BUILD_TYPE:STRING=Debug
 
 ```bash
 sudo apt-get update
-sudo apt-get install libpcl-dev libopenni-dev libopenni2-dev
+sudo apt-get install libopenni-dev libopenni2-dev
 ```
