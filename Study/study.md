@@ -1,4 +1,4 @@
-# PCL
+# PCL[https://xgyopen.github.io/2018/12/24/2018-12-24-imv-pcl-book/]
 
 ## 1. PCD文件头格式
 
@@ -242,3 +242,6 @@
 + 在PCL中，创建法线估计向量ne然后ne.compute(*normals);
 
 ### 7.2 主曲率
+
++ 主曲率是基于局部表面的形状来描述点的特征。它通常与法线估计一起使用
++ pcl::PrincipalCurvaturesEstimation是PCL中的点云曲率估计方法，其在法线计算的基础上对点云的曲率进行计算

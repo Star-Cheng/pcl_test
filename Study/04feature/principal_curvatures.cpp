@@ -4,6 +4,7 @@
 #include <ctime> //c++程序计时头文件
 #include <pcl/visualization/cloud_viewer.h>
 #include <boost/thread/thread.hpp>
+#include <pcl/features/normal_3d_omp.h>
 using namespace std;
 clock_t start_time, end_time;
 
@@ -22,7 +23,8 @@ typedef struct PCURVATURE
 void MaxCurvaturePoints(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, int n, pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out)
 {
     // 点云法线估计
-    pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
+    // pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne; // 创建法线估计向量
+    pcl::NormalEstimationOMP<pcl::PointXYZ, pcl::Normal> ne; // 创建法线估计向量
     ne.setInputCloud(cloud_in);
     pcl::search::KdTree<pcl::PointXYZ>::Ptr tree_normals_curvatures(new pcl::search::KdTree<pcl::PointXYZ>());
     ne.setSearchMethod(tree_normals_curvatures);
