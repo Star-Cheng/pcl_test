@@ -18,9 +18,8 @@ apt-get install libxmu-dev libxi-dev -y
 apt-get install mono-complete -y
 apt-get install openjdk-8-jdk openjdk-8-jre -y
 apt-get install libopenni-dev libopenni2-dev -y
-mkdir -p ~/download/pcl && cd ~/download/pcl
-git clone https://github.com/PointCloudLibrary/pcl.git && cd pcl 
-mkdir -p release && cd release
+mkdir -p ~/gym/download/pcl && cd ~/gym/download/pcl && git clone https://github.com/PointCloudLibrary/pcl.git && cd pcl 
+mkdir -p ~/gym/download/pcl/release && cd ~/gym/download/pcl/release
 cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr \ -DBUILD_GPU=ON-DBUILD_apps=ON -DBUILD_examples=ON \ -DCMAKE_INSTALL_PREFIX=/usr .. 
 make -j16
 make install
