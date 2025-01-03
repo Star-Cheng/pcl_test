@@ -1,5 +1,5 @@
 {
-    "C_Cpp.errorSquiggles": "Disabled",
+    "C_Cpp.errorSquiggles": "disabled",
     "cmake.configureOnOpen": false,
     "files.associations": {
         "cctype": "cpp",
@@ -70,6 +70,11 @@
         "numbers": "cpp",
         "semaphore": "cpp",
         "stop_token": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "core": "cpp",
+        "*.txx": "cpp",
+        "shared_mutex": "cpp",
+        "codecvt": "cpp",
+        "forward_list": "cpp"
     }
 }

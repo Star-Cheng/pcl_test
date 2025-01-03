@@ -1,30 +1,129 @@
 {
-    // 使用 IntelliSense 了解相关属性。 
-    // 悬停以查看现有属性的描述。
-    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
     "configurations": [
-        {
-            "name": "(gdb) Launch",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/../build/pcl_test", // 表示可执行程序所在的路径，其中，${workspaceRoot}表示VScode加载的文件夹的根目录
-            // "program": "${workspaceFolder}/../build/${fileBasenameNoExtension}", // 表示可执行程序所在的路径，其中，${workspaceRoot}表示VScode加载的文件夹的根目录
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false, // 设置为fasle时，控制台输出会显示在vscode的输出面板中
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ],
-            "preLaunchTask": "make build",
-            "miDebuggerPath": "/usr/bin/gdb"
-        }
+    {
+        "name": "Release run",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/../build/${workspaceFolderBasename}/${fileBasenameNoExtension}_release",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+            {
+                "description": "为 gdb 启用整齐打印",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            },
+            {
+                "description": "将反汇编风格设置为 Intel",
+                "text": "-gdb-set disassembly-flavor intel",
+                "ignoreFailures": true
+            }
+        ],
+        "preLaunchTask": "build-release"
+    },
+    {
+        "name": "Debug run",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/../build/${workspaceFolderBasename}/${fileBasenameNoExtension}_debug",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+            {
+                "description": "为 gdb 启用整齐打印",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            },
+            {
+                "description": "将反汇编风格设置为 Intel",
+                "text": "-gdb-set disassembly-flavor intel",
+                "ignoreFailures": true
+            }
+        ],
+        "preLaunchTask": "build-debug"
+    },
+    {
+        "name": "Release run2",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/../build/${workspaceFolderBasename}/${relativeFileDirname}/${fileBasenameNoExtension}_release",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+            {
+                "description": "为 gdb 启用整齐打印",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            },
+            {
+                "description": "将反汇编风格设置为 Intel",
+                "text": "-gdb-set disassembly-flavor intel",
+                "ignoreFailures": true
+            }
+        ],
+        "preLaunchTask": "build-release-2"
+    },
+    {
+        "name": "Debug run2",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/../build/${workspaceFolderBasename}/${relativeFileDirname}/${fileBasenameNoExtension}_debug",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+            {
+                "description": "为 gdb 启用整齐打印",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            },
+            {
+                "description": "将反汇编风格设置为 Intel",
+                "text": "-gdb-set disassembly-flavor intel",
+                "ignoreFailures": true
+            }
+        ],
+        "preLaunchTask": "build-debug-2"
+    },
+    {
+        "name": "Make Debug",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/../build/${workspaceFolderBasename}/${relativeFileDirname}/${fileBasenameNoExtension}",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+            {
+                "description": "为 gdb 启用整齐打印",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            },
+            {
+                "description": "将反汇编风格设置为 Intel",
+                "text": "-gdb-set disassembly-flavor intel",
+                "ignoreFailures": true
+            }
+        ],
+        "preLaunchTask": "make-external"
+    }
     ]
 }

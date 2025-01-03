@@ -30,7 +30,7 @@ int main()
     pcl::PointCloud<pcl::PointXYZ>::Ptr projection_filtered(new pcl::PointCloud<pcl::PointXYZ>);
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_sphere_filtered(new pcl::PointCloud<pcl::PointXYZ>);
 
-    pcl::io::loadPCDFile("../data/airplane.pcd", *cloud);
+    pcl::io::loadPCDFile("/root/code/pcl/pcl_test/data/airplane.pcd", *cloud);
     std::cout << "cloud points: " << cloud->width * cloud->height << std::endl;
 
     // 1. 直通滤波

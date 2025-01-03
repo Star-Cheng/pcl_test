@@ -14,8 +14,14 @@ cmake_minimum_required(VERSION 3.0)
 
 
 
-add_executable(pcl_test pcl_test.cpp)
+add_executable(ex1 ex1.cpp)
+target_link_libraries (ex1 ${PCL_LIBRARIES})
+install(TARGETS ex1 RUNTIME DESTINATION bin)
 
-target_link_libraries (pcl_test ${PCL_LIBRARIES})
+add_executable(ex2 ex2.cpp)
+target_link_libraries (ex2 ${PCL_LIBRARIES})
+install(TARGETS ex2 RUNTIME DESTINATION bin)
 
-install(TARGETS pcl_test RUNTIME DESTINATION bin)
+add_executable(ex3 ex3.cpp)
+target_link_libraries (ex3 ${PCL_LIBRARIES})
+install(TARGETS ex3 RUNTIME DESTINATION bin)

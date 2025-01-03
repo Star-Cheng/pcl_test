@@ -4,9 +4,10 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "make build",//编译的项目名，build
+            "label": "make build", //编译的项目名，build
             "type": "shell",
-            "command": "cd ./build ;cmake ../ -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ;make",//编译命令
+            "command": "cd ../build ;cmake ../pcl_test -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ;make -j16", //编译命令
+            // "command": "cd ../build ;cmake ${fileDirname} -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ;make -j16", //编译命令
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -16,8 +17,6 @@
             "label": "clean",
             "type": "shell",
             "command": "make clean",
-            
-
         }
     ]
 }
