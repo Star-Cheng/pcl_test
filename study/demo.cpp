@@ -1,4 +1,4 @@
-#include "include/my_point_type.h"
+#include "../include/my_point_type.h"
 
 int main()
 {

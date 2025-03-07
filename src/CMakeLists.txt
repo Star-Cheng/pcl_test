@@ -9,10 +9,6 @@ find_package(VTK REQUIRED)
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
-cmake_minimum_required(VERSION 3.0)
-# project(PCDToOBJ)
-
-
 
 add_executable(ex1 ex1.cpp)
 target_link_libraries (ex1 ${PCL_LIBRARIES})

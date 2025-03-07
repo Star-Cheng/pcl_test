@@ -14,7 +14,7 @@
 
 int main(int argc, char** argv)
 {
-    std::string input_file = "/root/code/pcl/pcl_test/data/rabbit.pcd";
+    std::string input_file = "./data/rabbit.pcd";
 
     // Load the point cloud
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);

@@ -75,6 +75,8 @@
         "*.txx": "cpp",
         "shared_mutex": "cpp",
         "codecvt": "cpp",
-        "forward_list": "cpp"
+        "forward_list": "cpp",
+        "numericaldiff": "cpp",
+        "eigen": "cpp"
     }
 }

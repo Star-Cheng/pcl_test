@@ -40,7 +40,7 @@ int main()
     //时差=time.tok-time.tic 用于计时
     pcl::console::TicToc time;
     time.tic();
-    std::string filename = "/root/code/pcl/pcl_test/data/airplane.pcd";//点云文件名
+    std::string filename = "./data/airplane.pcd";//点云文件名
     if (pcl::io::loadPCDFile<pcl::PointXYZ>(filename, *cloud_in_tgt) == -1)//*打开点云文件    
     {
         PCL_ERROR("Couldn't read file test_pcd.pcd\n");//输出错误原因：读取文件失败
